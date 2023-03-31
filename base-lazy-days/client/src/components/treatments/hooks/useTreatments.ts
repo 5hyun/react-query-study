@@ -15,6 +15,6 @@ export function useTreatments(): Treatment[] {
 
   // key를 이런식으로 하면 오타를 낼 일이 없다.
   // 쿼리 키를 일관적으로 해야 캐시된 데이터를 캐시가 잘 제공할 수 있다.
-  const { data = fallback } = useQuery(queryKeys.treatments, getTreatments, {});
+  const { data = fallback } = useQuery(queryKeys.treatments, getTreatments);
   return data;
 }
