@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from 'react';
+import { useQuery } from 'react-query';
 
 import type { Staff } from '../../../../../shared/types';
 import { axiosInstance } from '../../../axiosInstance';
 import { queryKeys } from '../../../react-query/constants';
 import { filterByTreatment } from '../utils';
-import { useQuery } from 'react-query';
 
 async function getStaff(): Promise<Staff[]> {
   const { data } = await axiosInstance.get('/staff');

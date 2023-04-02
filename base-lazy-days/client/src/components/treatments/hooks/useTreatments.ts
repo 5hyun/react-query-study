@@ -1,7 +1,8 @@
+import { useQuery, useQueryClient } from 'react-query';
+
 import type { Treatment } from '../../../../../shared/types';
 import { axiosInstance } from '../../../axiosInstance';
 import { queryKeys } from '../../../react-query/constants';
-import { useQuery } from 'react-query';
 
 // for when we need a query function for useQuery
 async function getTreatments(): Promise<Treatment[]> {
@@ -17,4 +18,9 @@ export function useTreatments(): Treatment[] {
   // 쿼리 키를 일관적으로 해야 캐시된 데이터를 캐시가 잘 제공할 수 있다.
   const { data = fallback } = useQuery(queryKeys.treatments, getTreatments);
   return data;
+}
+
+export function usePrefetchTreatments(): void {
+  const queryClient = useQueryClient();
+  queryClient.prefetchQuery(queryKeys.treatments, getTreatments);
 }

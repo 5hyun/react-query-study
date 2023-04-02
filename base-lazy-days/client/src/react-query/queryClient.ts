@@ -1,8 +1,8 @@
-import { QueryClient } from 'react-query';
-
 import { createStandaloneToast } from '@chakra-ui/react';
-import { theme } from '../theme';
+import { QueryClient } from 'react-query';
 import { inspect } from 'util';
+
+import { theme } from '../theme';
 import defaultOptions = module;
 
 const toast = createStandaloneToast({ theme });
