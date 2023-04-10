@@ -45,10 +45,10 @@ export function useUser(): UseUser {
     queryClient.setQueryData(queryKeys.user, newUser);
   }
 
-  // meant to be called from useAuth
+  // meant to be called from use Auth
   function clearUser() {
     queryClient.setQueryData(queryKeys.user, null);
-    queryClient.removeQueries('user-appointments');
+    queryClient.removeQueries([queryKeys.appointments, queryKeys.user]);
   }
 
   return { user, updateUser, clearUser };

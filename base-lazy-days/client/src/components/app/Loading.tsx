@@ -1,13 +1,15 @@
 import { Spinner, Text } from '@chakra-ui/react';
 import { ReactElement } from 'react';
-import { useIsFetching } from 'react-query';
+import { useIsFetching, useIsMutating } from 'react-query';
 
 export function Loading(): ReactElement {
   // useIsFetching은 현재 가져오고 있는 쿼리 호출의 정수 값을 리턴한다.
   const isFetching = useIsFetching(); // for now, just don't display
+  // useIsFetching과 비슷하지만 변이 호출 중 현재 해결되지 않은 것이 있는지 알려준다.
+  const isMutating = useIsMutating();
 
   // isFetching이 0보다 크면 로딩 스피너가 나타나게 한다.
-  const display = isFetching ? 'inherit' : 'none';
+  const display = isFetching || isMutating ? 'inherit' : 'none';
 
   return (
     <Spinner
